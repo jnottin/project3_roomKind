@@ -12,8 +12,8 @@ class App extends Component {
     return (
       <div className="App">
         < NavBar />
-        < NewResidence />
         < NewShelter />
+        < NewResidence />
         <header className="App-header">
           <div className="column">< Shelters /></div>
           <div className="column">< Residents /></div>
