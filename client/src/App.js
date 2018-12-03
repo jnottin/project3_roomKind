@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import {
+  Route,
+} from 'react-router-dom'
 import NavBar from './NavBar/NavBar.js';
-import Shelters from './Shelters/Shelters.js';
-import Residences from './Residences/Residences.js';
 import NewResidence from './NewResidence/NewResidence';
 import NewShelter from './NewShelter/NewShelter';
 import ReserveResidence from './ReserveResidence/ReserveResidence';
-
+import HomePage from './HomePage/HomePage';
+// import ReserveShelter from './ReserveShelter/ReserveShelter';
 
 class App extends Component {
   render() {
@@ -15,10 +17,15 @@ class App extends Component {
         < NavBar />
         < NewShelter />
         < NewResidence />
-        <header className="App-header">
-          <div className="column">< Shelters /></div>
-          <div className="column">< Residences /></div>
-        </header>
+        <Route path="/reserveResidence" exact
+          component={ReserveResidence}
+        />
+        <Route path="/reserveShelter" exact
+        // component={ReserveShelter}
+        />
+        <Route path="/" exact
+          component={HomePage}
+        />
       </div>
     );
   }

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
     Link,
-    Route,
-    Redirect,
-    Switch
 } from 'react-router-dom'
 import './Residences.css';
 
@@ -23,7 +19,12 @@ class Residences extends Component {
                     <h2 className="residencesHeader">Residences</h2>
                     <button onClick={this.newResidenceForm} className="newResidenceFormBtn">Add New Residence</button>
                 </div>
-                <p className="residencesBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, tenetur. Quisquam dolor quos minima architecto inventore dolore repudiandae eveniet quasi vero a facilis, iste illum amet commodi quam nulla rem!</p>
+                <div className="residencesBody">
+                    <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, tenetur. Quisquam dolor quos minima architecto inventore dolore repudiandae eveniet quasi vero a facilis, iste illum amet commodi quam nulla rem!</p>
+                    <Link to="/reserveResidence">
+                        <p>Reserve Residence</p>
+                    </Link>
+                </div>
             </div>
         );
     }
