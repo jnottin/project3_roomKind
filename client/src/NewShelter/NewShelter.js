@@ -12,7 +12,7 @@ class NewShelter extends Component {
     render() {
         return (
             <div id="newShelterForm" className="closed newShelterForm" >
-                <p>SHELTER SIDE BAR</p>
+                <p>NEW SHELTER FORM</p>
 
             </div>
         );
