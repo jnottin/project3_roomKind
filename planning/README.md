@@ -22,7 +22,7 @@ Express
 React
 JSX
 
-## Git Workflow
+## Workflow
 
 - Christina
   Shelter Model backend(Express)
