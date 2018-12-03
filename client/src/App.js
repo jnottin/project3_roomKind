@@ -5,6 +5,7 @@ import Shelters from './Shelters/Shelters.js';
 import Residences from './Residences/Residences.js';
 import NewResidence from './NewResidence/NewResidence';
 import NewShelter from './NewShelter/NewShelter';
+import ReserveResidence from './ReserveResidence/ReserveResidence';
 
 
 class App extends Component {
