@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './NavBar/NavBar.js';
 import Shelters from './Shelters/Shelters.js';
-import Residents from './Residents/Residents.js';
+import Residences from './Residences/Residences.js';
 import NewResidence from './NewResidence/NewResidence';
 import NewShelter from './NewShelter/NewShelter';
 
@@ -16,7 +16,7 @@ class App extends Component {
         < NewResidence />
         <header className="App-header">
           <div className="column">< Shelters /></div>
-          <div className="column">< Residents /></div>
+          <div className="column">< Residences /></div>
         </header>
       </div>
     );

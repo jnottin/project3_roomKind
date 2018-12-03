@@ -8,7 +8,7 @@ class NewResidence extends Component {
     render() {
         return (
             <div id="newResidenceForm" className="closed newResidenceForm" >
-                <p>RESIDENCE SIDE BAR</p>
+                <p>NEW RESIDENCE FORM</p>
 
             </div>
         );
