@@ -1,4 +1,4 @@
-/* @import url(http://fonts.googleapis.com/css?family=Josefin+Slab);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Slab);
 
 .form {
   background: white;
@@ -10,7 +10,7 @@
   border-radius: 10px;
   box-shadow: 2px 2px black;
 }
-.column {
+.col {
   margin: 100px;
   text-align: center;
   display: flex;
@@ -26,10 +26,10 @@ h1 {
   text-align: center;
 }
 
-button:hover {
+btn:hover {
   background: red;
 }
-button {
+btn {
   background: #4479ba;
   color: #fff;
   font-family: Josefin Slab;
@@ -41,4 +41,4 @@ button {
   padding: 2px 5px;
   border-radius: 10px;
   box-shadow: 2px 2px black;
-} */
+}
