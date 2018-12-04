@@ -26,7 +26,7 @@ JSX
 
 - Christina
   Shelter Model backend(Express)
-  Shelter Model front end(React)
+  Shelter Model frontend(React)
   Guest Model Front and backend
   Shelter Listing
 
@@ -40,4 +40,8 @@ JSX
   Residential Listing front & backend (Express and React)
   Residential Listing
 
-testing
+Project week planning:
+Monday: Front end for homepage, residential, shelter forms created
+Tuesday: routes/CRUD test deployment
+Wednesday: CRUD/test deployment
+Thursday: Styling/troubleshooting/deployment
