@@ -23,11 +23,7 @@ class ListShelter extends Component {
           <div>
             <label>
               Number of Beds:
-              <input
-                type="text"
-                name="beds
-              "
-              />
+              <input type="text" name="beds" />
             </label>
           </div>
           <div>
