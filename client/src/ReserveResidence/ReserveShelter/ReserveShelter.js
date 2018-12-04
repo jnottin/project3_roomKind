@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 // import "./ListShelter.css"
 
-class ListShelter extends Component {
+class ReserveShelter extends Component {
   render() {
     return (
-      <form className="List">
+      <form className="Reserve">
         <div className="column">
-          <h1>List Shelter</h1>
+          <h1>Reserve Shelter</h1>
 
           <div>
             <label>
@@ -34,4 +34,4 @@ class ListShelter extends Component {
     );
   }
 }
-export default ListShelter;
+export default ReserveShelter;
