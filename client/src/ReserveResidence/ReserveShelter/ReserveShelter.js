@@ -10,6 +10,7 @@ class ReserveShelter extends Component {
 
           <div>
             <label>
+              Name of Shelter:
               <input type="text" name="name" />
             </label>
           </div>
