@@ -1,6 +1,5 @@
 const express = require("express");
 const parser = require("body-parser");
-var PrettyError = require("pretty-error");
 const cors = require("cors");
 const Residential = require("./models/residential.js");
 const Shelter = require("./models/shelter.js");
@@ -20,8 +19,8 @@ app.get("/", (req, res) => {
 
 app.get("/api/roomKind", (req, res) => {
   Shelter.find()
-    .then(books => {
-      res.json(books);
+    .then(shelter => {
+      res.json(shelter);
     })
     .catch(err => {
       console.log(err);
@@ -53,7 +52,7 @@ app.post("/project3roomKind/residences", (req, res) => {
   });
 });
 
-app.get("/api/roomKind", (req, res) => {
+app.get("/api/roomKind/residences", (req, res) => {
   Residential.find()
     .then(resident => {
       res.json(resident);
