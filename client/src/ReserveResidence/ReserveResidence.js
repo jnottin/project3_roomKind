@@ -28,7 +28,7 @@ class ReserveResidence extends Component {
             </label>
           </div>
           <div>
-            <button className="btn">Submit</button>
+            <button>Submit</button>
           </div>
         </div>
       </form>
