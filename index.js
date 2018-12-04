@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 const express = require("express");
 const parser = require("body-parser");
 const cors = require("cors");
 const Residential = require("./models/residential.js");
 const Shelter = require("./models/shelter.js");
 const Guest = require("./models/guest.js");
+=======
+const express = require('express')
+const parser = require('body-parser')
+var PrettyError = require('pretty-error')
+const cors = require('cors')
+const Residential = require('./models/residential.js')
+const Shelter = require('./models/shelter.js')
+const Guest = require('./models/guest.js')
+>>>>>>> db5e3620a6605c07e3a5736611d1769e5933c0ee
 
 const app = express();
 
@@ -28,7 +38,7 @@ app.get("/api/roomKind", (req, res) => {
 });
 
 //New Shelter
-app.post("/", (req, res) => {
+app.post("/project3roomKind", (req, res) => {
   console.log(req.body);
   Shelter.create({
     name: req.body.name,
