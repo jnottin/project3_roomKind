@@ -28,10 +28,9 @@ class NewResidence extends Component {
   }
 
   handleFormSubmit(event) {
-    console.log("before");
     event.preventDefault();
     axios
-      .post("http://localhost:3007/project3roomKind", {
+      .post("http://localhost:3007/project3roomKind/residences", {
         name: this.state.name,
         location: this.state.location,
         numberOfDays: this.state.numberOfDays,
@@ -74,7 +73,7 @@ class NewResidence extends Component {
             <input
               type="text"
               name="numberOfDays"
-              value={this.state.beds}
+              value={this.state.numberOfDays}
               onChange={this.handleInputChange}
               placeholder="Number of Days"
             />
@@ -86,7 +85,7 @@ class NewResidence extends Component {
               name="beds"
               value={this.state.beds}
               onChange={this.handleInputChange}
-              placeholder="Number of Days"
+              placeholder="Beds"
             />
           </p>
           <p>
