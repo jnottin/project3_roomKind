@@ -6,7 +6,8 @@ import NewResidence from "./NewResidence/NewResidence";
 import NewShelter from "./NewShelter/NewShelter";
 import ReserveResidence from "./ReserveResidence/ReserveResidence";
 import HomePage from "./HomePage/HomePage";
-// import ReserveShelter from './ReserveShelter/ReserveShelter';
+import ReserveShelter from './ReserveShelter/ReserveShelter';
+
 class App extends Component {
   render() {
     return (
@@ -18,7 +19,7 @@ class App extends Component {
         <Route
           path="/reserveShelter"
           exact
-          // component={ReserveShelter}
+          component={ReserveShelter}
         />
         <Route path="/" exact component={HomePage} />
       </div>

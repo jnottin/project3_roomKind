@@ -28,14 +28,17 @@ JSX
   Shelter Model backend(Express)
   Shelter Model frontend(React)
   Guest Model Front and backend
+  Shelter Listing
 
 - Sam
   App front end homepage (React)]
   seed file / connection
   app creation (master repo)
+  getting data from the DB and displaying to front page
 
 - Bijay
   Residential Listing front & backend (Express and React)
+  Residential Listing
 
 Project week planning:
 Monday: Front end for homepage, residential, shelter forms created
