@@ -1,5 +1,6 @@
 const express = require('express')
 const parser = require('body-parser')
+var PrettyError = require('pretty-error')
 const cors = require('cors')
 const Residential = require('./models/residential.js')
 const Shelter = require('./models/shelter.js')
@@ -28,7 +29,7 @@ app.get('/api/roomKind', (req, res) => {
 })
 
 //New Shelter
-app.post('/', (req, res) => {
+app.post('/project3roomKind', (req, res) => {
     console.log(req.body)
     Shelter.create({
         name: req.body.name,

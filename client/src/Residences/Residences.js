@@ -5,6 +5,7 @@ import {
 import './Residences.css';
 
 class Residences extends Component {
+
     newResidenceForm = () => {
         if (document.getElementById("newResidenceForm").style.height === "100%") {
             document.getElementById("newResidenceForm").style.height = "0"
@@ -12,6 +13,7 @@ class Residences extends Component {
             document.getElementById("newResidenceForm").style.height = "100%";
         }
     };
+
     render() {
         return (
             <div className="residencesColumn" >
