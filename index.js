@@ -40,4 +40,26 @@ app.post("/project3roomKind", (req, res) => {
   });
 });
 
+app.post("/project3roomKind/residences", (req, res) => {
+  console.log(req.body);
+  Residential.create({
+    name: req.body.name,
+    location: req.body.location,
+    numberOfDays: req.body.numberOfDays,
+    beds: req.body.beds
+  }).then(residentials => {
+    res.send(residentials);
+  });
+});
+
+app.get("/api/roomKind/residences", (req, res) => {
+  Residential.find()
+    .then(resident => {
+      res.json(resident);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 app.listen(3007, () => {});

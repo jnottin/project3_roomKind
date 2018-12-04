@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ResidentialSchema = new mongoose.Schema({
   name: String,
-  locaiton: String,
+  location: String,
   numberOfDays: String,
   beds: String
 });

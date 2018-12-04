@@ -26,14 +26,14 @@ h1 {
   text-align: center;
 }
 
-btn:hover {
+button:hover {
   background: red;
 }
-btn {
+button {
   background: #4479ba;
   color: #fff;
   font-family: Josefin Slab;
-  font-size: 40px;
+  font-size: 15px;
   font-weight: bold;
   text-align: center;
   border: 1px solid black;
