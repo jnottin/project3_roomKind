@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import './App.css';
-import NavBar from './NavBar/NavBar.js';
-import Shelters from './Shelters/Shelters.js';
-import Residents from './Residents/Residents.js';
-import NewResidence from './NewResidence/NewResidence';
-import NewShelter from './NewShelter/NewShelter';
-
+import React, { Component } from "react";
+import "./App.css";
+import { Route } from "react-router-dom";
+import NavBar from "./NavBar/NavBar.js";
+import NewResidence from "./NewResidence/NewResidence";
+import NewShelter from "./NewShelter/NewShelter";
+import ReserveResidence from "./ReserveResidence/ReserveResidence";
+import HomePage from "./HomePage/HomePage";
+import ReserveShelter from './ReserveShelter/ReserveShelter';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        < NavBar />
-        < NewShelter />
-        < NewResidence />
-        <header className="App-header">
-          <div className="column">< Shelters /></div>
-          <div className="column">< Residents /></div>
-        </header>
+        <NavBar />
+        <NewShelter />
+        <NewResidence />
+        <Route path="/reserveResidence" exact component={ReserveResidence} />
+        <Route
+          path="/reserveShelter"
+          exact
+          component={ReserveShelter}
+        />
+        <Route path="/" exact component={HomePage} />
       </div>
     );
   }
 }
-
 export default App;

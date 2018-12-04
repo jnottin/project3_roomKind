@@ -7,13 +7,14 @@
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 3s;
+    transition: 2s;
 }
 .newShelterForm.closed {
     height: 0%;
-    transition: 3s;
+    transition: 2s;
 }
 
 .newShelterForm p {
     padding: 5px;
+    color: white;
 }
