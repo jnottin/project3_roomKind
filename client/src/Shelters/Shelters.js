@@ -38,14 +38,9 @@ class Shelters extends Component {
             <h4>{shelters.name}</h4>
             <h4>{shelters.location}</h4>
             <h4>{shelters.beds}</h4>
-            <Link to="/reserveShelter">
+            <Link to={`/reserveShelter/${shelters._id}`}>
               <p>ReserveShelter</p>
             </Link>
-            {/* <Route 
-            exact
-            path="/"component={/shelters}
-              <p>DeleteShelter</p>
-            /> */}
           </div>
         </div>
       );
