@@ -7,8 +7,9 @@ class ReserveResidence extends Component {
     super();
     this.state = {
       form: {
+        name: "",
+        email: "",
         arrivalTime: "",
-        location: "",
         numberOfBeds: "",
         numberOfDays: ""
       }
@@ -59,6 +60,29 @@ class ReserveResidence extends Component {
 
           <div>
             <label>
+              Name:
+              <input
+                type="text"
+                name="numberOfDays"
+                value={form.name}
+                onChange={this.changeHandler}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Email:
+              <input
+                type="text"
+                name="numberOfDays"
+                value={form.email}
+                onChange={this.changeHandler}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
               arrivalTime:
               <input
                 type="text"
@@ -71,7 +95,7 @@ class ReserveResidence extends Component {
 
           <div>
             <label>
-              Number of Beds:
+              Beds Requested:
               <input
                 type="text"
                 name="numberOfBeds"
