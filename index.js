@@ -27,7 +27,7 @@ app.get("/api/roomKind", (req, res) => {
     });
 });
 
-//New Shelter
+// Post to create new Shelter
 app.post("/project3roomKind", (req, res) => {
   console.log(req.body);
   Shelter.create({

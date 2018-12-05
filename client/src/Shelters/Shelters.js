@@ -34,12 +34,12 @@ class Shelters extends Component {
   render() {
     const shelters = this.state.shelters.map(shelters => {
       return (
-        <div key={shelters.name} className="sheltersColumn">
+        <div key={shelters._id} className="sheltersColumn">
           <div className="sheltersBody">
             <h4>{shelters.name}</h4>
             <h4>{shelters.location}</h4>
             <h4>{shelters.beds}</h4>
-            <Link to="/reserveShelter">
+            <Link to={`/reserveShelter/${shelters._id}`}>
               <p>ReserveShelter</p>
             </Link>
           </div>
@@ -59,15 +59,4 @@ class Shelters extends Component {
   }
 }
 
-//  {/* <div className="sheltersBody">
-//   <p>
-//     Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-//     rerum veniam dolor odio itaque fugiat nisi voluptatibus saepe velit
-//     delectus excepturi vero dolores, quam optio aliquid, iste molestias
-//     modi esse.
-//   </p>
-//   <Link to="/reserveShelter">
-//     <p>Reserve Shelter</p>
-//   </Link>
-// // </div> */}
 export default Shelters;

@@ -16,7 +16,7 @@ class App extends Component {
         <NewShelter />
         <NewResidence />
         <Route path="/reserveResidence" exact component={ReserveResidence} />
-        <Route path="/reserveShelter" exact component={ReserveShelter} />
+        <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
         <Route path="/" exact component={HomePage} />
         <Route path="/reserveResidence/:_id" component={ReserveResidence} />
       </div>
