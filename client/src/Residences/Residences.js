@@ -43,7 +43,7 @@ class Residences extends Component {
             <h4>{residences.beds}</h4>
             <Link to={"/reserveResidence/" + residences._id}>
               <p>ReserveResident</p>
-              <Route path="/reserveResidence" exact
+              <Route path={"/reserveResidence/" + residences._id} exact
                 render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
               />
             </Link>
@@ -56,7 +56,7 @@ class Residences extends Component {
       <div>
         <h2 className="residencesHeader">Residences</h2>
         <button onClick={this.newResidenceForm} className="newResidenceFormBtn">
-          Add New Resident
+          Add New Residence
         </button>
         <div>{residences}</div>
 

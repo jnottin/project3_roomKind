@@ -11,13 +11,22 @@ class ReserveResidence extends Component {
         email: "",
         arrivalTime: "",
         numberOfBeds: "",
-        numberOfDays: ""
+        numberOfDays: "",
       }
     };
 
     this.changeHandler = this.changeHandler.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
+
+  handleRemove(e) {
+    e.preventDefault()
+    console.log("hit handleRemove function")
+    axios.delete('http://localhost:3007/reserveResidence/' + this.props.match.params._id)
+      .then((result) => {
+      });
+  }
+
   changeHandler(e) {
     const target = e.target;
     const name = target.name;
@@ -28,42 +37,15 @@ class ReserveResidence extends Component {
     });
   }
 
-  // submitHandler(e) {
-  //   e.preventDefault();
-  //   fetch("/messages", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     data: JSON.stringify(this.state.form)
-  //   });
-  // }
-
-  onSubmit = e => {
-    e.preventDefault();
-    // get our form data out of state
-    const { arrivalTime, location, numberOfBeds, numberOfDays } = this.state;
-
-    axios
-      .post("/project3roomKind", {
-        arrivalTime,
-        numberOfBeds,
-        numberOfDays
-      })
-      .then(result => {
-        //access the results here....
-        console.log(result);
-      });
-  };
-
 
   render() {
-    const residenceId = this.props.match.params.id;
-    console.log(residenceId)
+    const residenceId = this.props.match.params._id;
     // const residence = this.props.list.filter(specificResidence => specificResidence.id === residenceId)
 
     const { form } = this.state;
 
     return (
-      <div className="form" onSubmit={this.onSubmit}>
+      <div className="form" >
         <div className="col">
           <h1>Reserve Residental</h1>
 
@@ -126,8 +108,8 @@ class ReserveResidence extends Component {
             </label>
           </div>
           <div>
-            <button><a href="/delete/:id">Submit</a></button>
-            {/* <button><a href={"/delete/" + residenceId}>Submit</a></button> */}
+            {/* <button onClick={this.handleRemove}>Submit</button> */}
+            <a href="/"><button onClick={this.handleRemove}>Submit</button></a>
           </div>
         </div>
       </div>
