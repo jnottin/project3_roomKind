@@ -7,6 +7,8 @@ class ReserveResidence extends Component {
     super();
     this.state = {
       form: {
+        name: "",
+        email: "",
         arrivalTime: "",
         numberOfBeds: "",
         numberOfDays: ""
@@ -34,12 +36,17 @@ class ReserveResidence extends Component {
   onSubmit = e => {
     e.preventDefault();
     // get our form data out of state
-    const { arrivalTime, numberOfBeds, numberOfDays } = this.state;
+    const { arrivalTime, location, numberOfBeds, numberOfDays } = this.state;
 
     axios
-      .post("/", { arrivalTime, numberOfBeds, numberOfDays })
+      .post("/project3roomKind", {
+        arrivalTime,
+        numberOfBeds,
+        numberOfDays
+      })
       .then(result => {
         //access the results here....
+        console.log(result);
       });
   };
 
@@ -51,6 +58,29 @@ class ReserveResidence extends Component {
         <div className="col">
           <h1>Reserve Residental</h1>
 
+          <div>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="numberOfDays"
+                value={form.name}
+                onChange={this.changeHandler}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Email:
+              <input
+                type="text"
+                name="numberOfDays"
+                value={form.email}
+                onChange={this.changeHandler}
+              />
+            </label>
+          </div>
           <div>
             <label>
               arrivalTime:
@@ -65,7 +95,7 @@ class ReserveResidence extends Component {
 
           <div>
             <label>
-              Number of Beds:
+              Beds Requested:
               <input
                 type="text"
                 name="numberOfBeds"

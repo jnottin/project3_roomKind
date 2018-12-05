@@ -39,8 +39,9 @@ class Residences extends Component {
           <div className="residencesBody">
             <h4>{residences.name}</h4>
             <h4>{residences.location}</h4>
+            <h4>{residences.numberOfDays}</h4>
             <h4>{residences.beds}</h4>
-            <Link to="/reserveResidence">
+            <Link to={"/reserveResidence/" + residences._id}>
               <p>ReserveResident</p>
             </Link>
           </div>
