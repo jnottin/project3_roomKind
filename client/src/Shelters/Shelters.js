@@ -41,6 +41,10 @@ class Shelters extends Component {
             <Link to={`/reserveShelter/${shelters._id}`}>
               <p>ReserveShelter</p>
             </Link>
+            <Link to={`/editShelter/${shelters._id}`}>
+              <p>Edit Shelter</p>
+            </Link>
+
           </div>
         </div>
       );

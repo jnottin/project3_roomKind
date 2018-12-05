@@ -32,6 +32,14 @@ class Residences extends Component {
       });
   }
 
+  handleUpdate(e) {
+    e.preventDefault()
+    console.log("hit handleUpdate function")
+    axios.put('http://localhost:3007/update/' + this.residences._id)
+      .then((result) => {
+      });
+  }
+
   render() {
     const residences = this.state.residences.map(residences => {
       return (
@@ -47,6 +55,8 @@ class Residences extends Component {
                 render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
               />
             </Link>
+
+
           </div>
         </div>
       );
