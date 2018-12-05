@@ -21,7 +21,6 @@ class Shelters extends Component {
     axios
       .get("http://localhost:3007/api/roomKind")
       .then(res => {
-        console.log(res);
         this.setState({
           shelters: res.data
         });

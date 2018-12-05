@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class ReserveShelter extends Component {
   render() {
     return (
-      <form className="Reserve">
+      <div className="Reserve">
         <div className="column">
           <h1>Reserve Shelter</h1>
 
@@ -28,10 +28,11 @@ class ReserveShelter extends Component {
             </label>
           </div>
           <div>
-            <button>Submit</button>
+            <a href="/"><button>Submit</button></a>
           </div>
         </div>
-      </form>
+      </div>
+
     );
   }
 }

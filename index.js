@@ -62,4 +62,18 @@ app.get("/api/roomKind/residences", (req, res) => {
     });
 });
 
-app.listen(3007, () => {});
+//Delete Residence once reserved
+app.get('/delete/:id', (req, res) => {
+  Residential.findOneAndRemove({ _id: req.params.id }).then(() => {
+    res.redirect("/");
+  });
+})
+
+//Delete Shelters once reserved
+app.get('/delete/:id', (req, res) => {
+  Shelter.findOneAndRemove({ _id: req.params.id }).then(() => {
+    res.redirect("/");
+  });
+})
+
+app.listen(3007, () => { });

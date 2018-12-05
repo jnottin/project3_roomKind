@@ -12,14 +12,18 @@ class ReserveResidence extends Component {
         numberOfDays: ""
       }
     };
+
     this.changeHandler = this.changeHandler.bind(this);
-    // this.submitHandler = this.submitHandler.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   changeHandler(e) {
-    e.persist();
-    let store = this.state;
-    store.form[e.target.name] = e.target.value;
-    this.setState(store);
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   // submitHandler(e) {
@@ -43,11 +47,16 @@ class ReserveResidence extends Component {
       });
   };
 
+
   render() {
+    const residenceId = this.props.match.params.id;
+    console.log(residenceId)
+    // const residence = this.props.list.filter(specificResidence => specificResidence.id === residenceId)
+
     const { form } = this.state;
 
     return (
-      <form className="form" onSubmit={this.onSubmit}>
+      <div className="form" onSubmit={this.onSubmit}>
         <div className="col">
           <h1>Reserve Residental</h1>
 
@@ -87,10 +96,11 @@ class ReserveResidence extends Component {
             </label>
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button><a href="/delete/:id">Submit</a></button>
+            {/* <button><a href={"/delete/" + residenceId}>Submit</a></button> */}
           </div>
         </div>
-      </form>
+      </div>
     );
   }
 }

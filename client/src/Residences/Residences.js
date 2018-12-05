@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "./Residences.css";
 import axios from "axios";
+import ReserveResidence from "../ReserveResidence/ReserveResidence";
 
 class Residences extends Component {
   constructor() {
@@ -22,7 +23,6 @@ class Residences extends Component {
     axios
       .get("http://localhost:3007/api/roomKind/residences")
       .then(res => {
-        console.log(res);
         this.setState({
           residences: res.data
         });
@@ -42,6 +42,9 @@ class Residences extends Component {
             <h4>{residences.beds}</h4>
             <Link to="/reserveResidence">
               <p>ReserveResident</p>
+              <Route path="/reserveResidence" exact
+                render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
+              />
             </Link>
           </div>
         </div>
@@ -55,6 +58,7 @@ class Residences extends Component {
           Add New Resident
         </button>
         <div>{residences}</div>
+
       </div>
     );
   }
