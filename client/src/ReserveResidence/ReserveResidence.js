@@ -8,6 +8,7 @@ class ReserveResidence extends Component {
     this.state = {
       form: {
         arrivalTime: "",
+        location: "",
         numberOfBeds: "",
         numberOfDays: ""
       }
@@ -34,12 +35,17 @@ class ReserveResidence extends Component {
   onSubmit = e => {
     e.preventDefault();
     // get our form data out of state
-    const { arrivalTime, numberOfBeds, numberOfDays } = this.state;
+    const { arrivalTime, location, numberOfBeds, numberOfDays } = this.state;
 
     axios
-      .post("/", { arrivalTime, numberOfBeds, numberOfDays })
+      .post("/project3roomKind", {
+        arrivalTime,
+        numberOfBeds,
+        numberOfDays
+      })
       .then(result => {
         //access the results here....
+        console.log(result);
       });
   };
 
