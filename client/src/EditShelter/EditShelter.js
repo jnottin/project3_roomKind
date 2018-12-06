@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Link, Route } from 'react';
 // import './HomePage.css';
 import axios from "axios";
+import HomePage from "../HomePage/HomePage"
 
 class EditShelter extends Component {
     constructor() {
@@ -35,7 +36,9 @@ class EditShelter extends Component {
         console.log(this.props.match.params._id)
         axios.delete('http://localhost:3007/deleteShelter/' + this.props.match.params.id)
             .then((result) => {
+
             });
+
     }
 
     componentDidMount() {
@@ -98,12 +101,11 @@ class EditShelter extends Component {
                                 placeholder={shelter.beds}
                             />
                         </p>
-                        <p>
-                            <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
-                            <div>
-                                <a><button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button></a>
-                            </div>
-                        </p>
+                        <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
+                        <div>
+                            <a href="/"><button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button></a>
+                        </div>
+
                     </form>
                 </div>
             )

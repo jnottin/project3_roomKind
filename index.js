@@ -82,10 +82,12 @@ app.delete('/deleteResidence/:id', (req, res) => {
 
 //Delete Shelters once reserved
 app.delete('/deleteShelter/:id', (req, res) => {
-  console.log({ _id: req.params.id })
-  Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
-    if (err) return next(err);
-    res.json(post);
+  // console.log({ _id: req.params.id })
+  // Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  // if (err) return next(err);
+  // res.direct("/")
+  Shelter.findOneAndRemove({ _id: req.params.id }).then(shelter => {
+    return res.redirect('/')
   });
 })
 
