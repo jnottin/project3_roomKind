@@ -8,6 +8,7 @@ class NewResidence extends Component {
 
     this.state = {
       name: "",
+      image: "",
       location: "",
       numberOfDays: "",
       beds: ""
@@ -32,6 +33,7 @@ class NewResidence extends Component {
     axios
       .post("http://localhost:3007/project3roomKind/residences", {
         name: this.state.name,
+        image: this.state.image,
         location: this.state.location,
         numberOfDays: this.state.numberOfDays,
         beds: this.state.beds
@@ -56,6 +58,16 @@ class NewResidence extends Component {
               value={this.state.name}
               onChange={this.handleInputChange}
               placeholder="Name of Residence"
+            />
+          </p>
+          <p>
+            <label htmlFor="image">Image Of Residence</label> <br />
+            <input
+              type="text"
+              name="image"
+              value={this.state.image}
+              onChange={this.handleInputChange}
+              placeholder="Image of Residence"
             />
           </p>
           <p>

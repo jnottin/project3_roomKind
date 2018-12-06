@@ -42,9 +42,11 @@ app.post("/project3roomKind", (req, res) => {
 
 // POST new residence
 app.post("/project3roomKind/residences", (req, res) => {
+  console.log(req.body.image);
   console.log(req.body);
   Residential.create({
     name: req.body.name,
+    image: req.body.image,
     location: req.body.location,
     numberOfDays: req.body.numberOfDays,
     beds: req.body.beds

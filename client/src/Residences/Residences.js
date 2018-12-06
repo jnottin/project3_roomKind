@@ -73,6 +73,7 @@ class Residences extends Component {
         <div key={residences._id} className="residencesColumn">
           <div className="residencesBody">
             <h4>Residence Name: {residences.name}</h4>
+            <img className="residenceImage" src={residences.image} />
             <h4>Location: {residences.location}</h4>
             <h4>Number of Days Available: {residences.numberOfDays}</h4>
             <h4>Number of Beds Available: {residences.beds}</h4>
