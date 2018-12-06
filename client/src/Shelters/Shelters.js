@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "./Shelters.css";
+import EditShelter from "../EditShelter/EditShelter";
+import ReserveShelter from "../ReserveShelter/ReserveShelter";
 import axios from "axios";
 
 class Shelters extends Component {
   constructor() {
     super();
     this.state = {
-      shelters: []
+      shelters: [],
+      name: "",
+      location: "",
+      beds: ""
     };
   }
   newShelterForm = () => {
@@ -21,7 +26,6 @@ class Shelters extends Component {
     axios
       .get("http://localhost:3007/api/roomKind")
       .then(res => {
-        console.log(res);
         this.setState({
           shelters: res.data
         });
@@ -36,17 +40,27 @@ class Shelters extends Component {
       return (
         <div key={shelters._id} className="sheltersColumn">
           <div className="sheltersBody">
-            <h4>{shelters.name}</h4>
-            <h4>{shelters.location}</h4>
-            <h4>{shelters.beds}</h4>
-            <Link to="/reserveShelter">
-              <p>ReserveShelter</p>
+            <h4>Shelter Name: {shelters.name}</h4>
+            <img className="shelterImage" src={shelters.image} />
+            <h4>Location: {shelters.location}</h4>
+            <h4>Number of Beds Available: {shelters.beds}</h4>
+            {/* <Link to={`/reserveShelter/${shelters._id}`}>
+              <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
+              <p>Reserve Shelter</p>
+            </Link> */}
+            <Link to={`/editShelter/${shelters._id}`}>
+              <Route
+                path={`/editShelter/${shelters._id}`}
+                exact
+                render={routerprops => (
+                  <EditShelter
+                    list={this.state.shelters}
+                    match={routerprops.match}
+                  />
+                )}
+              />
+              <p>Edit or Delete Shelter Listing</p>
             </Link>
-            {/* <Route 
-            exact
-            path="/"component={/shelters}
-              <p>DeleteShelter</p>
-            /> */}
           </div>
         </div>
       );

@@ -8,6 +8,7 @@ class NewShelter extends Component {
 
     this.state = {
       name: "",
+      image: "",
       location: "",
       beds: ""
     };
@@ -31,7 +32,7 @@ class NewShelter extends Component {
   }
 
   handleFormSubmit(event) {
-    console.log("before");
+    document.getElementById("newShelterForm").style.height = "0";
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind", {
@@ -59,6 +60,16 @@ class NewShelter extends Component {
               value={this.state.name}
               onChange={this.handleInputChange}
               placeholder="Name of Shelter"
+            />
+          </p>
+          <p>
+            <label htmlFor="image">Image of Shelter</label> <br />
+            <input
+              type="text"
+              name="image"
+              value={this.state.image}
+              onChange={this.handleInputChange}
+              placeholder="Image of Shelter"
             />
           </p>
           <p>

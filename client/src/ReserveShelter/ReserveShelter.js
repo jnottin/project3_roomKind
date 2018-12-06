@@ -1,37 +1,41 @@
 import React, { Component } from "react";
+// import Shelters from "../Shelters/Shelters";
+
 // import "./ListShelter.css"
+
 
 class ReserveShelter extends Component {
   render() {
     return (
-      <form className="Reserve">
+      <form className="Reserve" action="/" method="GET">
         <div className="column">
           <h1>Reserve Shelter</h1>
 
           <div>
             <label>
-              Name of Shelter:
+              Name:
               <input type="text" name="name" />
             </label>
           </div>
           <div>
             <label>
-              Location:
-              <input type="text" name="location" />
+              Email:
+              <input type="email" name="email" />
             </label>
           </div>
 
           <div>
             <label>
-              Number of Beds:
+              Beds Requested:
               <input type="text" name="beds" />
             </label>
           </div>
           <div>
-            <button>Submit</button>
+            <a href="/"><button>Submit</button></a>
           </div>
         </div>
       </form>
+
     );
   }
 }

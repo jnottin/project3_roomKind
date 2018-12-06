@@ -9,3 +9,8 @@
 .headerAndButton {
     display: inline;
 }
+
+.residenceImage {
+    height: 150px;
+    width: 200px;
+}
