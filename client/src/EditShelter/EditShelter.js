@@ -1,4 +1,4 @@
-import React, { Component, Link, Route } from 'react';
+import React, { Component } from 'react';
 // import './HomePage.css';
 import axios from "axios";
 import HomePage from "../HomePage/HomePage"
