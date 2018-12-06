@@ -29,7 +29,7 @@ class NewResidence extends Component {
   }
 
   handleFormSubmit(event) {
-    document.getElementById("newResidenceForm").style.height = "0"
+    document.getElementById("newResidenceForm").style.height = "0";
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind/residences", {
@@ -102,7 +102,9 @@ class NewResidence extends Component {
             />
           </p>
           <p>
-            <button type="submit" onClick={this.handleFormSubmit}>Submit</button>
+            <button type="submit" onClick={this.handleFormSubmit}>
+              Submit
+            </button>
             {/* <button type="submit" onClick={() => { this.props.createResidence(this.state) }}>Submit</button> */}
           </p>
         </form>
