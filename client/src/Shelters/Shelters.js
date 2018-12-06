@@ -44,10 +44,7 @@ class Shelters extends Component {
             <img className="shelterImage" src={shelters.image} />
             <h4>Location: {shelters.location}</h4>
             <h4>Number of Beds Available: {shelters.beds}</h4>
-            {/* <Link to={`/reserveShelter/${shelters._id}`}>
-              <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
-              <p>Reserve Shelter</p>
-            </Link> */}
+
             <Link to={`/editShelter/${shelters._id}`}>
               <Route
                 path={`/editShelter/${shelters._id}`}

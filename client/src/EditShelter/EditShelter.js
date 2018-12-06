@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import './HomePage.css';
 import axios from "axios";
+import HomePage from "../HomePage/HomePage";
 
 class EditShelter extends Component {
   constructor() {
@@ -9,7 +10,8 @@ class EditShelter extends Component {
       shelters: [],
       name: "",
       location: "",
-      beds: ""
+      beds: "",
+      image: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
@@ -43,7 +45,8 @@ class EditShelter extends Component {
       .put("http://localhost:3007/editShelter/" + this.props.match.params.id, {
         name: this.state.name,
         location: this.state.location,
-        beds: this.state.beds
+        beds: this.state.beds,
+        image: this.state.image
       })
       .then(result => {});
   }

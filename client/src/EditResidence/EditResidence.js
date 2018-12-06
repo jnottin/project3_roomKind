@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Redirect } from "react";
 // import './HomePage.css';
 import axios from "axios";
 import "./EditResidence.css";
@@ -9,9 +9,9 @@ class EditResidence extends Component {
     this.state = {
       residences: [],
       name: "",
-      image: String,
+      image: "",
       location: "",
-      numberOfDays: Number,
+      numberOfDays: "",
       beds: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -22,12 +22,26 @@ class EditResidence extends Component {
     const target = e.target;
     const name = target.name;
     const value = target.type === "checkbox" ? target.checked : target.value;
-
     this.setState({
       [name]: value
     });
   }
+  handleEdit(e) {
+    e.preventDefault();
 
+    axios
+      .put(
+        "http://localhost:3007/editResidence/" + this.props.match.params.id,
+        {
+          name: this.state.name,
+          image: this.state.image,
+          location: this.state.location,
+          numberOfDays: this.state.numberOfDays,
+          beds: this.state.beds
+        }
+      )
+      .then(result => {});
+  }
   handleRemove(e) {
     e.preventDefault();
     axios
@@ -35,22 +49,9 @@ class EditResidence extends Component {
         "http://localhost:3007/deleteResidence/" + this.props.match.params.id
       )
       .then(result => {});
+    return <Redirect to="/" />;
   }
 
-  handleEdit(e) {
-    e.preventDefault();
-    console.log("hit handleEdit SHELTER function");
-    console.log(this.props.match.params._id);
-    axios
-      .put("http://localhost:3007/editShelter/" + this.props.match.params.id, {
-        name: this.state.name,
-        image: this.state.image,
-        location: this.state.location,
-        numberOfDays: this.state.numberOfDays,
-        beds: this.state.beds
-      })
-      .then(result => {});
-  }
   componentDidMount() {
     axios
       .get("http://localhost:3007/api/roomKind/residences")
@@ -76,7 +77,7 @@ class EditResidence extends Component {
       return (
         <form className="newresidence">
           <div className="colform">
-            <h1>{residence.name}</h1>
+            <h2>{residence.name}</h2>
 
             <div>
               <p>
@@ -86,8 +87,19 @@ class EditResidence extends Component {
                   name="name"
                   onChange={this.handleInputChange}
                   value={this.state.name}
-                  // value={residence.name}
                   placeholder={residence.name}
+                />
+              </p>
+            </div>
+            <div>
+              <p>
+                <label htmlFor="image">Image</label> <br />
+                <input
+                  type="text"
+                  name="image"
+                  onChange={this.handleInputChange}
+                  value={this.state.image}
+                  placeholder={residence.image}
                 />
               </p>
             </div>
@@ -100,7 +112,6 @@ class EditResidence extends Component {
                   name="location"
                   onChange={this.handleInputChange}
                   value={this.state.location}
-                  // value={residence.location}
                   placeholder={residence.location}
                 />
               </p>
@@ -112,10 +123,21 @@ class EditResidence extends Component {
                 <input
                   type="text"
                   name="beds"
-                  // value={residence.beds}
                   value={this.state.beds}
                   onChange={this.handleInputChange}
                   placeholder={residence.beds}
+                />
+              </p>
+            </div>
+            <div>
+              <p>
+                <label htmlFor="numberOfDays">Number of Days</label> <br />
+                <input
+                  type="text"
+                  name="numberOfDays"
+                  onChange={this.handleInputChange}
+                  value={this.state.numberOfDays}
+                  placeholder={residence.numberOfDays}
                 />
               </p>
             </div>

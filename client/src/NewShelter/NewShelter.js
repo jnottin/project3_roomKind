@@ -8,9 +8,9 @@ class NewShelter extends Component {
 
     this.state = {
       name: "",
-      image: "",
       location: "",
-      beds: ""
+      beds: "",
+      image: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,17 +27,15 @@ class NewShelter extends Component {
     });
   }
 
-  random() {
-    console.log("random");
-  }
-
   handleFormSubmit(event) {
+    document.getElementById("newShelterForm").style.height = "0";
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind", {
         name: this.state.name,
         location: this.state.location,
-        beds: this.state.beds
+        beds: this.state.beds,
+        image: this.state.image
       })
       .then(res => {
         console.log("hello");

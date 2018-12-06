@@ -33,7 +33,7 @@ app.post("/project3roomKind", (req, res) => {
   Shelter.create({
     name: req.body.name,
     location: req.body.location,
-    // image: req.body.image,
+    image: req.body.image,
     beds: req.body.beds
   }).then(shelter => {
     res.send(shelter);
@@ -72,7 +72,13 @@ app.put("/editShelter/:id", (req, res) => {
     res.json(post);
   });
 });
-
+app.put("/editResidence/:id", (req, res) => {
+  console.log({ _id: req.params.id });
+  Residential.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 // Reserve resident
 app.delete("/reserveResidence/:id", (req, res) => {
   Residential.findByIdAndRemove(req.params.id, req.body, function(err, post) {
