@@ -70,8 +70,17 @@ app.delete('/reserveResidence/:id', (req, res) => {
   });
 })
 
+//Delete Residence once reserved
+app.delete('/deleteResidence/:id', (req, res) => {
+  Residential.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+})
+
 //Delete Shelters once reserved
 app.delete('/deleteShelter/:id', (req, res) => {
+  console.log({ _id: req.params.id })
   Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);

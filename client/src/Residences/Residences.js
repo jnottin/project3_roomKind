@@ -3,6 +3,7 @@ import { Link, Route } from "react-router-dom";
 import "./Residences.css";
 import axios from "axios";
 import ReserveResidence from "../ReserveResidence/ReserveResidence";
+import EditResidence from "../EditResidence/EditResidence";
 import NewResidence from "../NewResidence/NewResidence";
 
 class Residences extends Component {
@@ -77,9 +78,15 @@ class Residences extends Component {
             <h4>{residences.numberOfDays}</h4>
             <h4>{residences.beds}</h4>
             <Link to={"/reserveResidence/" + residences._id}>
-              <p>ReserveResident</p>
+              <p>Reserve Residence</p>
               <Route path={"/reserveResidence/" + residences._id} exact
                 render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
+              />
+            </Link>
+            <Link to={"/editResidence/" + residences._id}>
+              <p>Edit or Delete Residence</p>
+              <Route path={"/editResidence/" + residences._id} exact
+                render={(routerprops) => <EditResidence list={this.state.residences} match={routerprops.match} />}
               />
             </Link>
             {/* <NewResidence createResidence={this.handleFormSubmit} /> */}
