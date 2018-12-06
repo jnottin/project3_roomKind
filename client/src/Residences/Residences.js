@@ -23,11 +23,11 @@ class Residences extends Component {
 
   handleRemove = residence => {
     // e.prevexntDefault()
-    console.log("hit handleRemove function")
-    axios.delete('http://localhost:3007/reserveResidence/' + residence)
-      .then((result) => {
-      });
-  }
+    console.log("hit handleRemove function");
+    axios
+      .delete("http://localhost:3007/reserveResidence/" + residence)
+      .then(result => {});
+  };
 
   componentDidMount() {
     axios
@@ -43,11 +43,11 @@ class Residences extends Component {
   }
 
   handleUpdate(e) {
-    e.preventDefault()
-    console.log("hit handleUpdate function")
-    axios.put('http://localhost:3007/update/' + this.residences._id)
-      .then((result) => {
-      });
+    e.preventDefault();
+    console.log("hit handleUpdate function");
+    axios
+      .put("http://localhost:3007/update/" + this.residences._id)
+      .then(result => {});
   }
 
   // handleFormSubmit(event) {
@@ -77,16 +77,18 @@ class Residences extends Component {
             <h4>Location: {residences.location}</h4>
             <h4>Number of Days Available: {residences.numberOfDays}</h4>
             <h4>Number of Beds Available: {residences.beds}</h4>
-            {/* <Link to={"/reserveResidence/" + residences._id}>
-              <p>Reserve Residence</p>
-              <Route path={"/reserveResidence/" + residences._id} exact
-                render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
-              />
-            </Link> */}
+
             <Link to={`/editResidence/${residences._id}`}>
               <p>Edit or Delete Residence Listing</p>
-              <Route path={`/editResidence/${residences._id}`} exact
-                render={(routerprops) => <EditResidence list={this.state.residences} match={routerprops.match} />}
+              <Route
+                path={`/editResidence/${residences._id}`}
+                exact
+                render={routerprops => (
+                  <EditResidence
+                    list={this.state.residences}
+                    match={routerprops.match}
+                  />
+                )}
               />
             </Link>
           </div>
