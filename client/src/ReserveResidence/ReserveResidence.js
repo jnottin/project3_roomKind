@@ -6,109 +6,92 @@ class ReserveResidence extends Component {
   constructor() {
     super();
     this.state = {
-      residences: []
+      form: {
+        arrivalTime: "",
+        numberOfBeds: "",
+        numberOfDays: ""
+      }
     };
-
     this.changeHandler = this.changeHandler.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
+    // this.submitHandler = this.submitHandler.bind(this);
   }
-  componentDidMount() {
-    axios
-      .get("http://localhost:3007/api/roomKind/residences")
-      .then(res => {
-        this.setState({
-          residences: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-
-  handleRemove(e) {
-    e.preventDefault()
-    console.log("hit handleRemove function")
-    axios.delete('http://localhost:3007/reserveResidence/' + this.props.match.params._id)
-      .then((result) => {
-      });
-  }
-
   changeHandler(e) {
-    const target = e.target;
-    const name = target.name;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-
-    this.setState({
-      [name]: value
-    });
+    e.persist();
+    let store = this.state;
+    store.form[e.target.name] = e.target.value;
+    this.setState(store);
   }
 
+  // submitHandler(e) {
+  //   e.preventDefault();
+  //   fetch("/messages", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     data: JSON.stringify(this.state.form)
+  //   });
+  // }
 
+  onSubmit = e => {
+    e.preventDefault();
+    // get our form data out of state
+    const { arrivalTime, numberOfBeds, numberOfDays } = this.state;
+
+    axios
+      .post("/", { arrivalTime, numberOfBeds, numberOfDays })
+      .then(result => {
+        //access the results here....
+      });
+  };
 
   render() {
-    const residences = this.state.residences
-    const residenceId = this.props.match.params._id;
-    const residenceInfo = residences.filter(specificResidence => specificResidence._id === residenceId)
-    const residence = residenceInfo[0]
-    console.log(residence)
+    const { form } = this.state;
 
-    if (typeof residence != "undefined") {
-      return (
-        <div>
-          <h2>{residence.name}</h2>
+    return (
+      <form className="form" onSubmit={this.onSubmit}>
+        <div className="col">
+          <h1>Reserve Residental</h1>
 
-          <form className="newresidence">
-            <p>
-              <label htmlFor="Name">Name Of residence</label> <br />
+          <div>
+            <label>
+              arrivalTime:
               <input
                 type="text"
-                name="name"
-                onChange={this.handleInputChange}
-                value={this.state.name}
-                // value={residence.name}
-                placeholder={residence.name}
+                name="arrivalTime"
+                value={form.arrivalTime}
+                onChange={this.changeHandler}
               />
-            </p>
-            <p>
-              <label htmlFor="location">Location</label> <br />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Number of Beds:
               <input
                 type="text"
-                name="location"
-                onChange={this.handleInputChange}
-                value={this.state.location}
-                // value={residence.location}
-                placeholder={residence.location}
+                name="numberOfBeds"
+                value={form.numberOfBeds}
+                onChange={this.changeHandler}
               />
-            </p>
-            <p>
-              <label htmlFor="beds">Number of Beds</label> <br />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Number of Days:
               <input
                 type="text"
-                name="beds"
-                // value={residence.beds}
-                value={this.state.beds}
-                onChange={this.handleInputChange}
-                placeholder={residence.beds}
+                name="numberOfDays"
+                value={form.numberOfDays}
+                onChange={this.changeHandler}
               />
-            </p>
-            <p>
-              <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
-              <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
-            </p>
-          </form>
+            </label>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
         </div>
-      )
-
-
-    } else {
-      return (
-        <div>
-          <h1>order sdfsd empty</h1>
-          <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
-        </div>
-      )
-    }
-
+      </form>
+    );
   }
 }
 

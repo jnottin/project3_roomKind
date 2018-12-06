@@ -41,10 +41,10 @@ class Shelters extends Component {
             <h4>Name of Shelter: {shelters.name}</h4>
             <h4>Location: {shelters.location}</h4>
             <h4>Number of Beds Available: {shelters.beds}</h4>
-            <Link to={`/reserveShelter/${shelters._id}`}>
-              {/* <Route path="/reserveShelter/:id" exact component={ReserveShelter} /> */}
-              <p>ReserveShelter</p>
-            </Link>
+            {/* <Link to={`/reserveShelter/${shelters._id}`}>
+              <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
+              <p>Reserve Shelter</p>
+            </Link> */}
             <Link to={`/editShelter/${shelters._id}`}>
               <Route path={`/editShelter/${shelters._id}`} exact
                 render={(routerprops) => <EditShelter list={this.state.shelters} match={routerprops.match} />}
