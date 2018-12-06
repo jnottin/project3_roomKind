@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 // import "./ListShelter.css"
 
+
 class ReserveShelter extends Component {
   render() {
     return (
@@ -30,10 +31,11 @@ class ReserveShelter extends Component {
             </label>
           </div>
           <div>
-            <button>Submit</button>
+            <a href="/"><button>Submit</button></a>
           </div>
         </div>
       </form>
+
     );
   }
 }

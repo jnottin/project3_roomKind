@@ -16,7 +16,7 @@ class ReserveResidence extends Component {
       }
     };
     this.changeHandler = this.changeHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
+    // this.submitHandler = this.submitHandler.bind(this);
   }
   changeHandler(e) {
     e.persist();
@@ -25,14 +25,14 @@ class ReserveResidence extends Component {
     this.setState(store);
   }
 
-  submitHandler(e) {
-    e.preventDefault();
-    fetch("/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      data: JSON.stringify(this.state.form)
-    });
-  }
+  // submitHandler(e) {
+  //   e.preventDefault();
+  //   fetch("/messages", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     data: JSON.stringify(this.state.form)
+  //   });
+  // }
 
   onSubmit = e => {
     e.preventDefault();
@@ -66,6 +66,9 @@ class ReserveResidence extends Component {
       });
   }
 
+  changeBeds() {
+    this.setState({});
+  }
   render() {
     const form = this.state.form;
     const residences = this.state.residences;
