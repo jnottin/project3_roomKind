@@ -40,6 +40,15 @@ app.post("/project3roomKind", (req, res) => {
   });
 });
 
+// app.put("/update/:id", (req, res) => {
+//   req.body.complete = req.body.complete ? true : false;
+//   ReserveShelter.findOneAndUpdate({ _id: req.params.id }, req.body, {
+//     new: true
+//   }).then(user => {
+//     res.redirect("/project3roomKind" + _id);
+//   });
+// });
+
 app.post("/project3roomKind/residences", (req, res) => {
   console.log(req.body);
   Residential.create({
