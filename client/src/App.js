@@ -8,7 +8,7 @@ import ReserveResidence from "./ReserveResidence/ReserveResidence";
 import HomePage from "./HomePage/HomePage";
 import ReserveShelter from "./ReserveShelter/ReserveShelter";
 import EditShelter from "./EditShelter/EditShelter";
-// import EditResidence from "./EditResidence/EditResidence";
+import EditResidence from "./EditResidence/EditResidence";
 
 class App extends Component {
   render() {
@@ -18,10 +18,10 @@ class App extends Component {
         <NewShelter />
         <NewResidence />
         <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
-        {/* <Route path="/editResidence/:id" exact component={EditResidence} /> */}
+        <Route path="/editResidence/:id" exact component={EditResidence} />
         <Route path="/editShelter/:id" exact component={EditShelter} />
         <Route path="/" exact component={HomePage} />
-        <Route path="/reserveResidence/:_id" component={ReserveResidence} />
+        <Route path="/reserveResidence/:id" component={ReserveResidence} />
       </div>
     );
   }
