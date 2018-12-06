@@ -17,9 +17,8 @@ class App extends Component {
         <NavBar />
         <NewShelter />
         <NewResidence />
-        <Route path="/reserveResidence" exact component={ReserveResidence} />
         <Route path="/reserveShelter/:id" exact component={ReserveShelter} />
-        <Route path="/editResidence" exact component={EditResidence} />
+        <Route path="/editResidence/:id" exact component={EditResidence} />
         <Route path="/editShelter/:id" exact component={EditShelter} />
         <Route path="/" exact component={HomePage} />
         <Route path="/reserveResidence/:_id" component={ReserveResidence} />

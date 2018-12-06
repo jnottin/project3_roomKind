@@ -6,17 +6,23 @@ class ReserveResidence extends Component {
   constructor() {
     super();
     this.state = {
-      form: {
-        name: "",
-        email: "",
-        arrivalTime: "",
-        numberOfBeds: "",
-        numberOfDays: "",
-      }
+      residences: []
     };
 
     this.changeHandler = this.changeHandler.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+  }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3007/api/roomKind/residences")
+      .then(res => {
+        this.setState({
+          residences: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   handleRemove(e) {
@@ -38,82 +44,71 @@ class ReserveResidence extends Component {
   }
 
 
+
   render() {
+    const residences = this.state.residences
     const residenceId = this.props.match.params._id;
-    // const residence = this.props.list.filter(specificResidence => specificResidence.id === residenceId)
+    const residenceInfo = residences.filter(specificResidence => specificResidence._id === residenceId)
+    const residence = residenceInfo[0]
+    console.log(residence)
 
-    const { form } = this.state;
+    if (typeof residence != "undefined") {
+      return (
+        <div>
+          <h2>{residence.name}</h2>
 
-    return (
-      <div className="form" >
-        <div className="col">
-          <h1>Reserve Residental</h1>
-
-          <div>
-            <label>
-              Name:
+          <form className="newresidence">
+            <p>
+              <label htmlFor="Name">Name Of residence</label> <br />
               <input
                 type="text"
-                name="numberOfDays"
-                value={form.name}
-                onChange={this.changeHandler}
+                name="name"
+                onChange={this.handleInputChange}
+                value={this.state.name}
+                // value={residence.name}
+                placeholder={residence.name}
               />
-            </label>
-          </div>
-
-          <div>
-            <label>
-              Email:
+            </p>
+            <p>
+              <label htmlFor="location">Location</label> <br />
               <input
                 type="text"
-                name="numberOfDays"
-                value={form.email}
-                onChange={this.changeHandler}
+                name="location"
+                onChange={this.handleInputChange}
+                value={this.state.location}
+                // value={residence.location}
+                placeholder={residence.location}
               />
-            </label>
-          </div>
-          <div>
-            <label>
-              arrivalTime:
+            </p>
+            <p>
+              <label htmlFor="beds">Number of Beds</label> <br />
               <input
                 type="text"
-                name="arrivalTime"
-                value={form.arrivalTime}
-                onChange={this.changeHandler}
+                name="beds"
+                // value={residence.beds}
+                value={this.state.beds}
+                onChange={this.handleInputChange}
+                placeholder={residence.beds}
               />
-            </label>
-          </div>
-
-          <div>
-            <label>
-              Beds Requested:
-              <input
-                type="text"
-                name="numberOfBeds"
-                value={form.numberOfBeds}
-                onChange={this.changeHandler}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label>
-              Number of Days:
-              <input
-                type="text"
-                name="numberOfDays"
-                value={form.numberOfDays}
-                onChange={this.changeHandler}
-              />
-            </label>
-          </div>
-          <div>
-            {/* <button onClick={this.handleRemove}>Submit</button> */}
-            <a href="/"><button onClick={this.handleRemove}>Submit</button></a>
-          </div>
+            </p>
+            <p>
+              <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
+              <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
+            </p>
+          </form>
         </div>
-      </div>
-    );
+      )
+
+
+    } else {
+      return (
+        <div>
+          <h1>order sdfsd empty</h1>
+          <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
+        </div>
+      )
+    }
+
   }
 }
 
