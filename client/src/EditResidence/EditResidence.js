@@ -7,11 +7,16 @@ class EditResidence extends Component {
   constructor() {
     super();
     this.state = {
-      residences: []
+      residences: [],
+      name: "",
+      image: String,
+      location: "",
+      numberOfDays: Number,
+      beds: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
-    this.handleEdit = this.handleRemove.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
   handleInputChange(e) {
     const target = e.target;
@@ -23,13 +28,6 @@ class EditResidence extends Component {
     });
   }
 
-  handleEdit(e) {
-    e.preventDefault();
-    axios
-      .put("http://localhost:3007/editResidence/" + this.props.match.params.id)
-      .then(result => {});
-  }
-
   handleRemove(e) {
     e.preventDefault();
     axios
@@ -39,6 +37,20 @@ class EditResidence extends Component {
       .then(result => {});
   }
 
+  handleEdit(e) {
+    e.preventDefault();
+    console.log("hit handleEdit SHELTER function");
+    console.log(this.props.match.params._id);
+    axios
+      .put("http://localhost:3007/editShelter/" + this.props.match.params.id, {
+        name: this.state.name,
+        image: this.state.image,
+        location: this.state.location,
+        numberOfDays: this.state.numberOfDays,
+        beds: this.state.beds
+      })
+      .then(result => {});
+  }
   componentDidMount() {
     axios
       .get("http://localhost:3007/api/roomKind/residences")
@@ -59,7 +71,6 @@ class EditResidence extends Component {
       specificResidence => specificResidence._id === residenceId
     );
     const residence = residenceInfo[0];
-    console.log(residence);
 
     if (typeof residence != "undefined") {
       return (
