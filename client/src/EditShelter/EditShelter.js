@@ -112,10 +112,10 @@ class EditShelter extends Component {
                         <p>
                             <button type="submit" onClick={this.handleEdit}>
                                 Done With Change!
-              </button>
+                                </button>
                             <button type="submit" onClick={this.handleRemove}>
                                 Delete Shelter Post
-              </button>
+                            </button>
                         </p>
                     </form>
                 </div>
