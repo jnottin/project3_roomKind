@@ -65,13 +65,13 @@ app.get("/api/roomKind/residences", (req, res) => {
     });
 });
 
-// app.put("/edit/:id", (req, res) => {
-//   console.log({ _id: req.params.id });
-//   Shelter.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
-//     if (err) return next(err);
-//     res.json(post);
-//   });
-// });
+app.put("/editShelter/:id", (req, res) => {
+  console.log({ _id: req.params.id });
+  Shelter.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 // Reserve resident
 app.delete("/reserveResidence/:id", (req, res) => {

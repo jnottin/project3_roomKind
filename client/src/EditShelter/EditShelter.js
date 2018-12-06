@@ -6,7 +6,10 @@ class EditShelter extends Component {
   constructor() {
     super();
     this.state = {
-      shelters: []
+      shelters: [],
+      name: "",
+      location: "",
+      beds: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
@@ -30,6 +33,18 @@ class EditShelter extends Component {
       .delete(
         "http://localhost:3007/deleteShelter/" + this.props.match.params.id
       )
+      .then(result => {});
+  }
+  handleEdit(e) {
+    e.preventDefault();
+    console.log("hit handleEdit SHELTER function");
+    console.log(this.props.match.params._id);
+    axios
+      .put("http://localhost:3007/editShelter/" + this.props.match.params.id, {
+        name: this.state.name,
+        location: this.state.location,
+        beds: this.state.beds
+      })
       .then(result => {});
   }
 

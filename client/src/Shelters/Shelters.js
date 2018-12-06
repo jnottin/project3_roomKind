@@ -9,7 +9,10 @@ class Shelters extends Component {
   constructor() {
     super();
     this.state = {
-      shelters: []
+      shelters: [],
+      name: "",
+      location: "",
+      beds: ""
     };
   }
   newShelterForm = () => {
