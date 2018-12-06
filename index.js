@@ -71,4 +71,20 @@ app.get("/api/roomKind/residences", (req, res) => {
     });
 });
 
-app.listen(3007, () => {});
+//Delete Residence once reserved
+app.delete('/reserveResidence/:id', (req, res) => {
+  Residential.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+})
+
+//Delete Shelters once reserved
+app.delete('/deleteShelter/:id', (req, res) => {
+  Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+})
+
+app.listen(3007, () => { });
