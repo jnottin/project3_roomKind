@@ -5,7 +5,7 @@ const ShelterSchema = new mongoose.Schema({
   name: String,
   location: String,
   beds: Number,
-  img: String
+  image: String
 });
 
 module.exports = mongoose.model("Shelter", ShelterSchema);
