@@ -31,7 +31,6 @@ class NewShelter extends Component {
   }
 
   handleFormSubmit(event) {
-    console.log("before");
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind", {

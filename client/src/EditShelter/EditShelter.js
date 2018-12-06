@@ -8,21 +8,31 @@ class EditShelter extends Component {
         this.state = {
             shelters: []
         };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
     }
     handleInputChange(e) {
         const target = e.target;
         const name = target.name;
         const value = target.type === "checkbox" ? target.checked : target.value;
 
-        // this.setState({
-        //     [name]: value
-        // });
+        this.setState({
+            [name]: value
+        });
     }
 
     handleEdit(e) {
         e.preventDefault()
         console.log("hit handleEdit function")
-        axios.delete('http://localhost:3007/reserveResidence/' + this.props.match.params._id)
+        axios.put('http://localhost:3007/edit/' + this.props.match.params._id)
+            .then((result) => {
+            });
+    }
+
+    handleRemove(e) {
+        e.preventDefault()
+        console.log("hit handleRemove function")
+        axios.delete('http://localhost:3007/deleteShelter/' + this.props.match.params._id)
             .then((result) => {
             });
     }
@@ -52,7 +62,7 @@ class EditShelter extends Component {
                 <div>
                     <h2>{shelter.name}</h2>
 
-                    <form className="newShelter" onSubmit={this.handleFormSubmit}>
+                    <form className="newShelter">
                         <p>
                             <label htmlFor="Name">Name Of Shelter</label> <br />
                             <input
@@ -87,7 +97,8 @@ class EditShelter extends Component {
                             />
                         </p>
                         <p>
-                            <button type="submit">Submit</button>
+                            <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
+                            <button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button>
                         </p>
                     </form>
                 </div>

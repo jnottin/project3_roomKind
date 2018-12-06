@@ -64,11 +64,6 @@ app.get("/api/roomKind/residences", (req, res) => {
 
 //Delete Residence once reserved
 app.delete('/reserveResidence/:id', (req, res) => {
-  // console.log("Hit residences delete route")
-  // var id = { _id: req.params._id }
-  // console.log(id)
-  // Residential.findOneAndDelete({ _id: req.params._id }).then(() => {
-  // res.redirect("/");
   Residential.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -76,11 +71,11 @@ app.delete('/reserveResidence/:id', (req, res) => {
 })
 
 //Delete Shelters once reserved
-app.get('/delete/:id', (req, res) => {
-  Shelter.findOneAndRemove({ _id: req.params.id })
-    .then(() => {
-      res.redirect("/");
-    });
+app.delete('/deleteShelter/:id', (req, res) => {
+  Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
 })
 
 app.listen(3007, () => { });
