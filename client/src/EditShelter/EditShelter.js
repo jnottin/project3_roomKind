@@ -54,6 +54,7 @@ class EditShelter extends Component {
 
     render() {
         const shelters = this.state.shelters
+        console.log(shelters)
         const shelterId = this.props.match.params.id;
         const shelterInfo = shelters.filter(specificshelter => specificshelter._id === shelterId)
         const shelter = shelterInfo[0]
@@ -99,7 +100,9 @@ class EditShelter extends Component {
                         </p>
                         <p>
                             <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
-                            <button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button>
+                            <div>
+                                <a><button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button></a>
+                            </div>
                         </p>
                     </form>
                 </div>
