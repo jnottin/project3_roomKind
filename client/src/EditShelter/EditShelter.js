@@ -22,6 +22,7 @@ class EditShelter extends Component {
     });
   }
 
+<<<<<<< HEAD
   handleEdit(e) {
     e.preventDefault();
     console.log("hit handleEdit function");
@@ -29,6 +30,14 @@ class EditShelter extends Component {
       .put("http://localhost:3007/Edit/" + this.props.match.params._id)
       .then(result => {});
   }
+=======
+    render() {
+        const shelters = this.state.shelters
+        console.log(shelters)
+        const shelterId = this.props.match.params.id;
+        const shelterInfo = shelters.filter(specificshelter => specificshelter._id === shelterId)
+        const shelter = shelterInfo[0]
+>>>>>>> 42f53d12297ad4af7a52629cb68ce8328be1fb6b
 
   handleRemove(e) {
     e.preventDefault();
@@ -41,6 +50,7 @@ class EditShelter extends Component {
       .then(result => {});
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     axios
       .get("http://localhost:3007/api/roomKind")
@@ -53,6 +63,51 @@ class EditShelter extends Component {
         console.log(err);
       });
   }
+=======
+                    <form className="newShelter">
+                        <p>
+                            <label htmlFor="Name">Name Of Shelter</label> <br />
+                            <input
+                                type="text"
+                                name="name"
+                                onChange={this.handleInputChange}
+                                value={this.state.name}
+                                // value={shelter.name}
+                                placeholder={shelter.name}
+                            />
+                        </p>
+                        <p>
+                            <label htmlFor="location">Location</label> <br />
+                            <input
+                                type="text"
+                                name="location"
+                                onChange={this.handleInputChange}
+                                value={this.state.location}
+                                // value={shelter.location}
+                                placeholder={shelter.location}
+                            />
+                        </p>
+                        <p>
+                            <label htmlFor="beds">Number of Beds</label> <br />
+                            <input
+                                type="text"
+                                name="beds"
+                                // value={shelter.beds}
+                                value={this.state.beds}
+                                onChange={this.handleInputChange}
+                                placeholder={shelter.beds}
+                            />
+                        </p>
+                        <p>
+                            <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
+                            <div>
+                                <a><button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button></a>
+                            </div>
+                        </p>
+                    </form>
+                </div>
+            )
+>>>>>>> 42f53d12297ad4af7a52629cb68ce8328be1fb6b
 
   render() {
     const shelters = this.state.shelters;

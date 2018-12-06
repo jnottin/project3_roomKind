@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import "./Shelters.css";
 import EditShelter from "../EditShelter/EditShelter";
+import ReserveShelter from "../ReserveShelter/ReserveShelter";
 import axios from "axios";
 
 
@@ -37,10 +38,11 @@ class Shelters extends Component {
       return (
         <div key={shelters._id} className="sheltersColumn">
           <div className="sheltersBody">
-            <h4>{shelters.name}</h4>
-            <h4>{shelters.location}</h4>
-            <h4>{shelters.beds}</h4>
+            <h4>Name of Shelter: {shelters.name}</h4>
+            <h4>Location: {shelters.location}</h4>
+            <h4>Number of Beds Available: {shelters.beds}</h4>
             <Link to={`/reserveShelter/${shelters._id}`}>
+              {/* <Route path="/reserveShelter/:id" exact component={ReserveShelter} /> */}
               <p>ReserveShelter</p>
             </Link>
             <Link to={`/editShelter/${shelters._id}`}>

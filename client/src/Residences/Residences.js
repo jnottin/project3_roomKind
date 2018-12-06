@@ -4,7 +4,6 @@ import "./Residences.css";
 import axios from "axios";
 import ReserveResidence from "../ReserveResidence/ReserveResidence";
 import EditResidence from "../EditResidence/EditResidence";
-import NewResidence from "../NewResidence/NewResidence";
 
 class Residences extends Component {
   constructor() {
@@ -73,26 +72,22 @@ class Residences extends Component {
       return (
         <div key={residences._id} className="residencesColumn">
           <div className="residencesBody">
-            <h4>{residences.name}</h4>
-            <h4>{residences.location}</h4>
-            <h4>{residences.numberOfDays}</h4>
-            <h4>{residences.beds}</h4>
+            <h4>Residence Name: {residences.name}</h4>
+            <h4>Location: {residences.location}</h4>
+            <h4>Number of Days Available: {residences.numberOfDays}</h4>
+            <h4>Number of Beds Available: {residences.beds}</h4>
             <Link to={"/reserveResidence/" + residences._id}>
-              <p>Reserve Residence</p>
+              <p>Edit or Delete Residence Listing</p>
               <Route path={"/reserveResidence/" + residences._id} exact
                 render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
               />
             </Link>
-            <Link to={"/editResidence/" + residences._id}>
-              <p>Edit or Delete Residence</p>
-              <Route path={"/editResidence/" + residences._id} exact
+            {/* <Link to={`/editResidence/${residences._id}`}>
+              <p>Edit or Delete Residence Listing</p>
+              <Route path={`/editResidence/${residences._id}`} exact
                 render={(routerprops) => <EditResidence list={this.state.residences} match={routerprops.match} />}
               />
-            </Link>
-            {/* <NewResidence createResidence={this.handleFormSubmit} /> */}
-            <a href="/"><button onClick={this.handleRemove}>Delete</button></a>
-
-
+            </Link> */}
           </div>
         </div>
       );

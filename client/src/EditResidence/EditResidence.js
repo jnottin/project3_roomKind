@@ -10,6 +10,7 @@ class EditResidence extends Component {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleEdit = this.handleRemove.bind(this);
     }
     handleInputChange(e) {
         const target = e.target;
@@ -40,7 +41,7 @@ class EditResidence extends Component {
 
     componentDidMount() {
         axios
-            .get("http://localhost:3007/api/roomKind")
+            .get("http://localhost:3007/api/roomKind/residences")
             .then(res => {
                 this.setState({
                     residences: res.data
@@ -54,19 +55,17 @@ class EditResidence extends Component {
 
     render() {
         const residences = this.state.residences
-        console.log(residences)
         const residenceId = this.props.match.params.id;
-        const residenceInfo = residences.filter(specificresidence => specificresidence._id === residenceId)
+        const residenceInfo = residences.filter(specificResidence => specificResidence._id === residenceId)
         const residence = residenceInfo[0]
         console.log(residence)
 
         if (typeof residence != "undefined") {
             return (
                 <div>
-                    <h2>hello</h2>
-                    {/* <h2>{residence.name}</h2> */}
+                    <h2>{residence.name}</h2>
 
-                    {/* <form className="newresidence">
+                    <form className="newresidence">
                         <p>
                             <label htmlFor="Name">Name Of residence</label> <br />
                             <input
@@ -90,17 +89,6 @@ class EditResidence extends Component {
                             />
                         </p>
                         <p>
-                            <label htmlFor="numberOfDays">Number Of Days</label> <br />
-                            <input
-                                type="text"
-                                name="numberOfDays"
-                                // value={residence.numberOfDays}
-                                value={this.state.numberOfDays}
-                                onChange={this.handleInputChange}
-                                placeholder={residence.numberOfDays}
-                            />
-                        </p>
-                        <p>
                             <label htmlFor="beds">Number of Beds</label> <br />
                             <input
                                 type="text"
@@ -113,17 +101,19 @@ class EditResidence extends Component {
                         </p>
                         <p>
                             <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
-                            <button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button>
+                            <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
                         </p>
-                    </form> */}
-                    {/* <button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button> */}
+                    </form>
                 </div>
             )
 
 
         } else {
             return (
-                <h1>order empty</h1>
+                <div>
+                    <h1>order sdfsd empty</h1>
+                    <button type="submit" onClick={this.handleRemove}>Delete residence Post</button>
+                </div>
             )
         }
 
