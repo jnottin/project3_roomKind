@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import './HomePage.css';
 import axios from "axios";
 import HomePage from "../HomePage/HomePage"
@@ -7,10 +7,14 @@ class EditShelter extends Component {
     constructor() {
         super();
         this.state = {
-            shelters: []
+            shelters: [],
+            name: "",
+            location: "",
+            beds: ""
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
     handleInputChange(e) {
         const target = e.target;
@@ -22,23 +26,27 @@ class EditShelter extends Component {
         });
     }
 
-    handleEdit(e) {
-        e.preventDefault()
-        console.log("hit handleEdit function")
-        axios.put('http://localhost:3007/edit/' + this.props.match.params._id)
-            .then((result) => {
-            });
-    }
-
     handleRemove(e) {
-        e.preventDefault()
-        console.log("hit handleRemove SHELTER function")
-        console.log(this.props.match.params._id)
-        axios.delete('http://localhost:3007/deleteShelter/' + this.props.match.params.id)
-            .then((result) => {
-
-            });
-
+        e.preventDefault();
+        console.log("hit handleRemove SHELTER function");
+        console.log(this.props.match.params._id);
+        axios
+            .delete(
+                "http://localhost:3007/deleteShelter/" + this.props.match.params.id
+            )
+            .then(result => { });
+    }
+    handleEdit(e) {
+        e.preventDefault();
+        console.log("hit handleEdit SHELTER function");
+        console.log(this.props.match.params._id);
+        axios
+            .put("http://localhost:3007/editShelter/" + this.props.match.params.id, {
+                name: this.state.name,
+                location: this.state.location,
+                beds: this.state.beds
+            })
+            .then(result => { });
     }
 
     componentDidMount() {
@@ -54,13 +62,13 @@ class EditShelter extends Component {
             });
     }
 
-
     render() {
-        const shelters = this.state.shelters
-        console.log(shelters)
+        const shelters = this.state.shelters;
         const shelterId = this.props.match.params.id;
-        const shelterInfo = shelters.filter(specificshelter => specificshelter._id === shelterId)
-        const shelter = shelterInfo[0]
+        const shelterInfo = shelters.filter(
+            specificshelter => specificshelter._id === shelterId
+        );
+        const shelter = shelterInfo[0];
 
         if (typeof shelter != "undefined") {
             return (
@@ -101,24 +109,21 @@ class EditShelter extends Component {
                                 placeholder={shelter.beds}
                             />
                         </p>
-                        <button type="submit" onClick={this.handleEdit}>Done With Change!</button>
-                        <div>
-                            <a href="/"><button type="submit" onClick={this.handleRemove}>Delete Shelter Post</button></a>
-                        </div>
-
+                        <p>
+                            <button type="submit" onClick={this.handleEdit}>
+                                Done With Change!
+              </button>
+                            <button type="submit" onClick={this.handleRemove}>
+                                Delete Shelter Post
+              </button>
+                        </p>
                     </form>
                 </div>
-            )
-
-
+            );
         } else {
-            return (
-                <h1>order empty</h1>
-            )
+            return <h1>order empty</h1>;
         }
-
     }
 }
-
 
 export default EditShelter;

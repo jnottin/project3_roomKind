@@ -40,6 +40,7 @@ app.post("/project3roomKind", (req, res) => {
   });
 });
 
+// POST new residence
 app.post("/project3roomKind/residences", (req, res) => {
   console.log(req.body.image);
   console.log(req.body);
@@ -64,23 +65,32 @@ app.get("/api/roomKind/residences", (req, res) => {
     });
 });
 
-//Delete Residence once reserved
-app.delete('/reserveResidence/:id', (req, res) => {
-  Residential.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+app.put("/editShelter/:id", (req, res) => {
+  console.log({ _id: req.params.id });
+  Shelter.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     if (err) return next(err);
     res.json(post);
   });
-})
+});
+
+// Reserve resident
+app.delete("/reserveResidence/:id", (req, res) => {
+  Residential.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 //Delete Residence once reserved
-app.delete('/deleteResidence/:id', (req, res) => {
-  Residential.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+app.delete("/deleteResidence/:id", (req, res) => {
+  Residential.findByIdAndRemove(req.params.id, req.body, function(err, post) {
     if (err) return next(err);
     res.json(post);
   });
-})
+});
 
 //Delete Shelters once reserved
+<<<<<<< HEAD
 app.delete('/deleteShelter/:id', (req, res) => {
   // console.log({ _id: req.params.id })
   // Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
@@ -88,7 +98,14 @@ app.delete('/deleteShelter/:id', (req, res) => {
   // res.direct("/")
   Shelter.findOneAndRemove({ _id: req.params.id }).then(shelter => {
     return res.redirect('/')
+=======
+app.delete("/deleteShelter/:id", (req, res) => {
+  console.log({ _id: req.params.id });
+  Shelter.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+    if (err) return next(err);
+    res.json(post);
+>>>>>>> 31bafd7a240b583d1136a84fde9aab813afb6fff
   });
-})
+});
 
-app.listen(3007, () => { });
+app.listen(3007, () => {});

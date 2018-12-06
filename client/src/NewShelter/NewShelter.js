@@ -8,6 +8,7 @@ class NewShelter extends Component {
 
     this.state = {
       name: "",
+      image: "",
       location: "",
       beds: ""
     };
@@ -59,6 +60,16 @@ class NewShelter extends Component {
               value={this.state.name}
               onChange={this.handleInputChange}
               placeholder="Name of Shelter"
+            />
+          </p>
+          <p>
+            <label htmlFor="image">Image of Shelter</label> <br />
+            <input
+              type="text"
+              name="image"
+              value={this.state.image}
+              onChange={this.handleInputChange}
+              placeholder="Image of Shelter"
             />
           </p>
           <p>
