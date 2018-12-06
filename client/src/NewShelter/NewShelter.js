@@ -61,6 +61,14 @@ class NewShelter extends Component {
             />
           </p>
           <p>
+            <label htmlFor="img">Image of Shelter</label> <br />
+            <input
+              type="file"
+              value={this.state.img}
+              placeholder="Image of Shelter"
+            />
+          </p>
+          <p>
             <label htmlFor="location">Location</label> <br />
             <input
               type="text"
