@@ -6,6 +6,7 @@ class ReserveResidence extends Component {
   constructor() {
     super();
     this.state = {
+      residences: [],
       form: {
         name: "",
         email: "",
@@ -15,7 +16,7 @@ class ReserveResidence extends Component {
       }
     };
     this.changeHandler = this.changeHandler.bind(this);
-    // this.submitHandler = this.submitHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
   changeHandler(e) {
     e.persist();
@@ -24,37 +25,53 @@ class ReserveResidence extends Component {
     this.setState(store);
   }
 
-  // submitHandler(e) {
-  //   e.preventDefault();
-  //   fetch("/messages", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     data: JSON.stringify(this.state.form)
-  //   });
-  // }
+  submitHandler(e) {
+    e.preventDefault();
+    fetch("/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: JSON.stringify(this.state.form)
+    });
+  }
 
   onSubmit = e => {
     e.preventDefault();
     // get our form data out of state
-    const { arrivalTime, location, numberOfBeds, numberOfDays } = this.state;
+    const { name, email, arrivalTime, numberOfBeds, numberOfDays } = this.state;
 
-    axios
-      .post("/project3roomKind", {
-        arrivalTime,
-        numberOfBeds,
-        numberOfDays
-      })
-      .then(result => {
-        //access the results here....
-        console.log(result);
-      });
+    // axios
+    //   .post("/project3roomKind/residences", {
+    //     name,
+    //     email,
+    //     arrivalTime,
+    //     numberOfBeds,
+    //     numberOfDays
+    //   })
+    //   .then(result => {
+    //     //access the results here....
+    //     console.log(result);
+    //   });
   };
 
+  componentDidMount() {
+    axios
+      .get("http://localhost:3007/api/roomKind/residences")
+      .then(res => {
+        this.setState({
+          residences: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-    const { form } = this.state;
+    const form = this.state.form;
+    const residences = this.state.residences;
 
     return (
-      <form className="form" onSubmit={this.onSubmit}>
+      <form className="form" action="/">
         <div className="col">
           <h1>Reserve Residental</h1>
 
@@ -63,7 +80,7 @@ class ReserveResidence extends Component {
               Name:
               <input
                 type="text"
-                name="numberOfDays"
+                name="name"
                 value={form.name}
                 onChange={this.changeHandler}
               />
@@ -75,7 +92,7 @@ class ReserveResidence extends Component {
               Email:
               <input
                 type="text"
-                name="numberOfDays"
+                name="email"
                 value={form.email}
                 onChange={this.changeHandler}
               />
@@ -83,7 +100,7 @@ class ReserveResidence extends Component {
           </div>
           <div>
             <label>
-              arrivalTime:
+              Arrival Time:
               <input
                 type="text"
                 name="arrivalTime"
@@ -117,7 +134,14 @@ class ReserveResidence extends Component {
             </label>
           </div>
           <div>
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              onSubmit={
+                (this.state.residences.beds = this.state.form.numberOfBeds)
+              }
+            >
+              Submit
+            </button>
           </div>
         </div>
       </form>

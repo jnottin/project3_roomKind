@@ -37,10 +37,10 @@ class Residences extends Component {
       return (
         <div key={residences._id} className="residencesColumn">
           <div className="residencesBody">
-            <h4>{residences.name}</h4>
-            <h4>{residences.location}</h4>
-            <h4>{residences.numberOfDays}</h4>
-            <h4>{residences.beds}</h4>
+            <h4>Name: {residences.name}</h4>
+            <h4>Location: {residences.location}</h4>
+            <h4>Days: {residences.numberOfDays}</h4>
+            <h4>Beds: {residences.beds}</h4>
             <Link to={"/reserveResidence/" + residences._id}>
               <p>ReserveResident</p>
             </Link>
