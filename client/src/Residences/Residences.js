@@ -77,18 +77,18 @@ class Residences extends Component {
             <h4>Location: {residences.location}</h4>
             <h4>Number of Days Available: {residences.numberOfDays}</h4>
             <h4>Number of Beds Available: {residences.beds}</h4>
-            <Link to={"/reserveResidence/" + residences._id}>
-              <p>Edit or Delete Residence Listing</p>
+            {/* <Link to={"/reserveResidence/" + residences._id}>
+              <p>Reserve Residence</p>
               <Route path={"/reserveResidence/" + residences._id} exact
                 render={(routerprops) => <ReserveResidence list={this.state.residences} match={routerprops.match} />}
               />
-            </Link>
-            {/* <Link to={`/editResidence/${residences._id}`}>
+            </Link> */}
+            <Link to={`/editResidence/${residences._id}`}>
               <p>Edit or Delete Residence Listing</p>
               <Route path={`/editResidence/${residences._id}`} exact
                 render={(routerprops) => <EditResidence list={this.state.residences} match={routerprops.match} />}
               />
-            </Link> */}
+            </Link>
           </div>
         </div>
       );
@@ -101,7 +101,6 @@ class Residences extends Component {
           Add New Residence
         </button>
         <div>{residences}</div>
-
       </div>
     );
   }
