@@ -35,6 +35,7 @@ JSX
   seed file / connection
   app creation (master repo)
   getting data from the DB and displaying to front page
+  
 
 - Bijay
   Residential Listing front & backend (Express and React)
@@ -45,3 +46,11 @@ Monday: Front end for homepage, residential, shelter forms created
 Tuesday: routes/CRUD test deployment
 Wednesday: CRUD/test deployment
 Thursday: Styling/troubleshooting/deployment
+
+Needed to do:
+    - Reserve Residence/Shelter -- after submit button, remove residence link to specific ID for residence/shelter and redirect back to listing page
+    - putting in image for each residence/shelter
+    - update counts of beds, count as update?
+
+    
+

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ShelterSchema = new mongoose.Schema({
   name: String,
   location: String,
-  beds: String
+  beds: Number
 });
 
 module.exports = mongoose.model("Shelter", ShelterSchema);

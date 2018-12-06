@@ -89,7 +89,8 @@ class NewResidence extends Component {
             />
           </p>
           <p>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={this.handleFormSubmit}>Submit</button>
+            {/* <button type="submit" onClick={() => { this.props.createResidence(this.state) }}>Submit</button> */}
           </p>
         </form>
       </div>

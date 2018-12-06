@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "./Shelters.css";
+import EditShelter from "../EditShelter/EditShelter";
 import axios from "axios";
+
 
 class Shelters extends Component {
   constructor() {
@@ -21,7 +23,6 @@ class Shelters extends Component {
     axios
       .get("http://localhost:3007/api/roomKind")
       .then(res => {
-        console.log(res);
         this.setState({
           shelters: res.data
         });
@@ -42,6 +43,13 @@ class Shelters extends Component {
             <Link to={`/reserveShelter/${shelters._id}`}>
               <p>ReserveShelter</p>
             </Link>
+            <Link to={`/editShelter/${shelters._id}`}>
+              <Route path={`/editShelter/${shelters._id}`} exact
+                render={(routerprops) => <EditShelter list={this.state.shelters} match={routerprops.match} />}
+              />
+              <p>Edit or Delete Shelter Listing</p>
+            </Link>
+
           </div>
         </div>
       );
