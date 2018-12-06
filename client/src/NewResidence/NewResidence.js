@@ -29,6 +29,7 @@ class NewResidence extends Component {
   }
 
   handleFormSubmit(event) {
+    document.getElementById("newResidenceForm").style.height = "0"
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind/residences", {

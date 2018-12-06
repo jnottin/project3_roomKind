@@ -90,11 +90,21 @@ app.delete("/deleteResidence/:id", (req, res) => {
 });
 
 //Delete Shelters once reserved
+<<<<<<< HEAD
+app.delete('/deleteShelter/:id', (req, res) => {
+  // console.log({ _id: req.params.id })
+  // Shelter.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  // if (err) return next(err);
+  // res.direct("/")
+  Shelter.findOneAndRemove({ _id: req.params.id }).then(shelter => {
+    return res.redirect('/')
+=======
 app.delete("/deleteShelter/:id", (req, res) => {
   console.log({ _id: req.params.id });
   Shelter.findByIdAndRemove(req.params.id, req.body, function(err, post) {
     if (err) return next(err);
     res.json(post);
+>>>>>>> 31bafd7a240b583d1136a84fde9aab813afb6fff
   });
 });
 

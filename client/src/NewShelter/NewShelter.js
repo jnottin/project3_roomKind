@@ -32,6 +32,7 @@ class NewShelter extends Component {
   }
 
   handleFormSubmit(event) {
+    document.getElementById("newShelterForm").style.height = "0";
     event.preventDefault();
     axios
       .post("http://localhost:3007/project3roomKind", {

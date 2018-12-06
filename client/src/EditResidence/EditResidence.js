@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Redirect } from 'react';
 // import './HomePage.css';
 import axios from "axios";
 
@@ -37,6 +37,9 @@ class EditResidence extends Component {
         axios.delete('http://localhost:3007/deleteResidence/' + this.props.match.params.id)
             .then((result) => {
             });
+        return <Redirect
+            to="/"
+        />
     }
 
     componentDidMount() {
