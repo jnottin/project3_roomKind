@@ -23,3 +23,9 @@
     "react-router-dom": "^4.3.1"
   }
 }
+
+
+git remote add heroku git@heroku.com:roomkind.git
+heroku git:remote -a falling-wind-1624
+mongo ds127954.mlab.com:27954/roomkind -u user2 -p abc123
+mongodb://user2:abc123@ds127954.mlab.com:27954/roomkind

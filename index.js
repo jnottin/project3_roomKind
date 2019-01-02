@@ -104,4 +104,6 @@ app.delete("/deleteShelter/:id", (req, res) => {
   });
 });
 
-app.listen(3007, () => {});
+app.listen(3007, () => {
+  console.log("running on port 3007");
+});
